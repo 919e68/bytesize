@@ -1,4 +1,4 @@
-module Types::Custom
+module Types
   class PaginationType < Types::Base::Object
     field :page, Integer, null: true
     field :pages, Integer, null: true
