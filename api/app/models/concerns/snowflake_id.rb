@@ -6,15 +6,6 @@ module SnowflakeId
     before_validation :ensure_sid
   end
 
-  class_methods do
-    def get_id(sid)
-      return nil unless sid
-      return unless column_names.include?('sid')
-
-      find_by(sid: sid)&.id
-    end
-  end
-
   private
 
   def ensure_sid

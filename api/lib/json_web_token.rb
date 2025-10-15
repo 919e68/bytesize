@@ -1,4 +1,4 @@
-class Jwt
+class JsonWebToken
   ALGORITHM = 'HS256'.freeze
   SECRET_KEY = ENV.fetch('SECRET_KEY_BASE')
 

@@ -21,13 +21,15 @@ module Auth
         end
       end
 
+      session_sid = Snowflake.id.to_s
       payload = {
-        session_id: Snowflake.id
+        session_id: session_sid
       }
 
-      jwt = Jwt.encode(payload)
+      jwt = JsonWebToken.encode(payload)
 
       session = Session.create!(
+        sid: session_sid,
         user: user,
         access_token: jwt,
         expires_at: Time.now + SESSION_MAX_AGE
