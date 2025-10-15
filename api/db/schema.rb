@@ -55,7 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_073048) do
     t.bigint "user_id", null: false
     t.string "name", limit: 100, null: false
     t.string "icon", limit: 100
-    t.text "description", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_snacks_on_name"

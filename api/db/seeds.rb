@@ -1,9 +1,30 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+flavors = [
+  { name: "Salty",    icon: "🧂" },
+  { name: "Sweet",    icon: "🍬" },
+  { name: "Spicy",    icon: "🌶️" },
+  { name: "Umami",    icon: "🍄" },
+  { name: "Sour",     icon: "🍋" },
+  { name: "Savory",   icon: "🍖" },
+  { name: "Bitter",   icon: "🍫" },
+  { name: "Smoky",    icon: "🔥" },
+  { name: "Tangy",    icon: "🍊" },
+  { name: "Zesty",    icon: "🥭" },
+  { name: "Creamy",   icon: "🥛" },
+  { name: "Cheesy",   icon: "🧀" },
+  { name: "Buttery",  icon: "🧈" },
+  { name: "Herbal",   icon: "🌿" },
+  { name: "Fruity",   icon: "🍓" },
+  { name: "Nutty",    icon: "🥜" },
+  { name: "Earthy",   icon: "🌰" },
+  { name: "Peppery",  icon: "🫑" },
+  { name: "Garlicky", icon: "🧄" },
+  { name: "Toasty",   icon: "🍞" }
+]
+
+flavors.each do |flavor|
+  Flavor.find_or_create_by!(name: flavor[:name]) do |f|
+    f.icon = flavor[:icon]
+  end
+end
+
+puts "✅ Created #{Flavor.count} flavors!"

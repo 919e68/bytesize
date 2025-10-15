@@ -39,7 +39,7 @@ module Auth
     end
 
     def self.authenticate_access_token(access_token)
-      jwt_payload = Jwt.validate(access_token)
+      jwt_payload = JsonWebToken.validate(access_token)
       return unless jwt_payload
 
       return unless jwt_payload&.dig('session_id')
