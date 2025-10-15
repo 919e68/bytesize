@@ -4,6 +4,7 @@ module Types::Root
     field :fetch_current_user, resolver: Resolvers::Auth::FetchCurrentUser
 
     # snack
+    field :fetch_snack, resolver: Resolvers::Snack::FetchSnack
     field :fetch_snacks, resolver: Resolvers::Snack::FetchSnacks
   end
 end
