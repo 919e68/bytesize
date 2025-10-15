@@ -28,10 +28,10 @@ class GraphqlController < ApplicationController
       if context[:auth_token] != :logout
         cookies[:auth_token] = {
           value: context[:auth_token],
+          expires: 1.day.from_now,
           httponly: true,
-          secure: true,
-          same_site: :lax, # :strict | :lax | :none
-          expires: 2.hours.from_now
+          secure: Rails.env.production?,
+          same_site: :lax
         }
       else
         cookies[:auth_token] = nil
