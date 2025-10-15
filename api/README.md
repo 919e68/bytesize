@@ -30,10 +30,12 @@ Snacks
   - description
 
 SnackFlavors
+  - id
   - snack_id
   - flavor_id
 
 Ratings
+  - id
   - user_id
   - snack_id
   - rating
