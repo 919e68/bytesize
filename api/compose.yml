@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    container_name: api.snackswap.playfun.dev-app
+    environment:
+      RAILS_ENV: production
+    command: bundle exec rails server -e production -b 0.0.0.0 -p 3000
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    networks:
+      - spire_network
+    stdin_open: true
+    tty: true
+
+networks:
+  spire_network:
+    external: true
