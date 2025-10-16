@@ -1,0 +1,24 @@
+{
+  "editor.formatOnSave": true,
+
+  // Global ESLint autofix (for JS files etc.)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // TypeScript files (.ts)
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  // TypeScript React files (.tsx)
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  }
+}

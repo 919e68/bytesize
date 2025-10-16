@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -e
+
+ENV=$1
+
+if [ -z "$ENV" ]; then
+  echo "usage: $0 <env>"
+  exit 1
+fi
+
+if [ "$ENV" = "dev" ]; then
+  echo "🚀 starting development environment..."
+
+  docker compose -f compose.dev.yml build
+  docker compose -f compose.dev.yml down >/dev/null 2>&1 || true
+  docker compose -f compose.dev.yml up -d
+
+elif [ "$ENV" = "prod" ]; then
+  echo "🚀 starting production environment..."
+
+  docker compose -f compose.yml build
+  docker compose -f compose.yml down >/dev/null 2>&1 || true
+  docker compose -f compose.yml up -d
+else
+  echo "❌ unknown environment: $ENV"
+  echo "usage: $0 <env>"
+  exit 1
+fi

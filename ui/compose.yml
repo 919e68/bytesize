@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: app.live-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    networks:
+      - spire_network
+
+networks:
+  spire_network:
+    external: true

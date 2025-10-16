@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: app.playfun.dev-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    networks:
+      - spire_network
+
+networks:
+  spire_network:
+    external: true
