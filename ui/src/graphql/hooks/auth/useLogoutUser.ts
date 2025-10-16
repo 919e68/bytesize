@@ -5,6 +5,7 @@ import type { MutationCallback } from '~/lib/types/global'
 import { LogoutUserMutation } from '~/graphql/generated/graphql'
 import { LOGOUT_USER_MUTATION } from '~/graphql/mutations/auth/LogoutUser'
 import { graphqlReq } from '~/lib/request'
+import { queryClient } from '~/providers/QueryClient'
 
 export const useLogoutUser = (callbacks?: MutationCallback) => {
   return useMutation<boolean, Error>({
@@ -18,6 +19,9 @@ export const useLogoutUser = (callbacks?: MutationCallback) => {
     },
     onSuccess: (data) => {
       callbacks?.onSuccess?.(data)
+
+      queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SNACKS_QUERY'] })
+      queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SUGGESTED_SNACKS_QUERY'] })
     }
   })
 }
