@@ -13,7 +13,7 @@ module Graphql
         def pagination
           return unless object.items.is_a?(ActiveRecord::Relation)
 
-          item_count = object.items.except(:limit, :offset).count
+          item_count = object.items.except(:select, :limit, :offset).count
           item_limit = object.arguments[:limit]
           current_page = object.arguments[:page]
           total_pages = (item_count / item_limit.to_f).ceil

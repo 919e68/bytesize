@@ -6,5 +6,6 @@ module Types::Root
     # snack
     field :fetch_snack, resolver: Resolvers::Snack::FetchSnack
     field :fetch_snacks, resolver: Resolvers::Snack::FetchSnacks
+    field :fetch_suggested_snacks, resolver: Resolvers::Snack::FetchSuggestedSnacks
   end
 end

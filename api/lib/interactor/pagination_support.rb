@@ -14,12 +14,13 @@ module Interactor
       return unless context.data.is_a?(ActiveRecord::Relation)
 
       scope = context.data
+      count_query = context.data.clone.unscope(:select, :order)
 
       query_order  = context.order
       query_limit  = context.limit.present? ? context.limit.to_i : DEFAULT_LIMIT
       query_offset = context.offset.present? ? context.offset.to_i : 0
       query_page   = context.page.present? ? context.page.to_i : 1
-      total_count  = scope.count
+      total_count  = count_query.count
 
       if [ query_page, query_limit, total_count ].all?(&:present?)
         total_pages = total_count.positive? ? (total_count.to_f / query_limit).ceil : 0
