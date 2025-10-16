@@ -25,7 +25,7 @@ const RootLayout = ({
     <html lang="en" suppressHydrationWarning>
       <body className={`${font.className} bg-yellow-50 antialiased`}>
         <QueryClient>
-          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange enableSystem>
             <Header />
             {children}
             <Toaster closeButton position="top-right" />

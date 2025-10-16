@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { RegisterOptions, FieldValues, Path } from 'react-hook-form'
+import { FieldValues, Path, RegisterOptions } from 'react-hook-form'
 
 import { FilterInput, OrderInput } from '~/graphql/generated/graphql'
 export type Maybe<T> = T | null | undefined
 
-export type InputFieldRules<T extends FieldValues> = Omit<RegisterOptions<T, Path<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>
+export type InputFieldRules<T extends FieldValues> = Omit<
+  RegisterOptions<T, Path<T>>,
+  'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
+>
 
 export type ID = string
 export interface MutationCallback {

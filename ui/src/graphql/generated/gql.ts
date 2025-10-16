@@ -14,11 +14,17 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+    "\n  mutation LoginUser($username: String!, $password: String!) {\n    auth: loginUser(username: $username, password: $password) {\n      token\n      expiresAt\n      user {\n        id\n        username\n        name\n      }\n    }\n  }\n": typeof types.LoginUserDocument,
+    "\n  mutation LogoutUser {\n    logout: logoutUser\n  }\n": typeof types.LogoutUserDocument,
+    "\n  mutation RegisterUser($attributes: UserAttributes!) {\n    user: registerUser(attributes: $attributes) {\n      id\n      username\n      name\n      createdAt\n      updatedAt\n    }\n  }\n": typeof types.RegisterUserDocument,
     "\n  query FetchCurrentUser {\n    currentUser: fetchCurrentUser {\n      id\n      username\n      name\n    }\n  }\n": typeof types.FetchCurrentUserDocument,
     "\n  query FetchSuggestedSnacks(\n    $filters: [FilterInput!]\n    $order: [OrderInput!]\n    $page: Int\n    $limit: Int\n  ) {\n    snacks: fetchSuggestedSnacks(\n      filters: $filters\n      order: $order\n      page: $page,\n      limit: $limit\n    ) {\n      pagination {\n        page\n        pages\n        limit\n        count\n        prev\n        next\n      }\n\n      nodes {\n        id\n        icon\n        name\n        description\n        snackFlavors {\n          id\n          flavor {\n            id\n            name\n            icon\n          }\n        }\n        createdAt\n        updatedAt\n        flavorMatchScore\n      }\n    }\n  }\n": typeof types.FetchSuggestedSnacksDocument,
     "\n  query FetchSnacks(\n    $filters: [FilterInput!]\n    $order: [OrderInput!]\n    $page: Int\n    $limit: Int\n  ) {\n    snacks: fetchSnacks(\n      filters: $filters\n      order: $order\n      page: $page,\n      limit: $limit\n    ) {\n      pagination {\n        page\n        pages\n        limit\n        count\n        prev\n        next\n      }\n\n      nodes {\n        id\n        icon\n        name\n        description\n        snackFlavors {\n          id\n          flavor {\n            id\n            name\n            icon\n          }\n        }\n        createdAt\n        updatedAt\n      }\n    }\n  }\n": typeof types.FetchSnacksDocument,
 };
 const documents: Documents = {
+    "\n  mutation LoginUser($username: String!, $password: String!) {\n    auth: loginUser(username: $username, password: $password) {\n      token\n      expiresAt\n      user {\n        id\n        username\n        name\n      }\n    }\n  }\n": types.LoginUserDocument,
+    "\n  mutation LogoutUser {\n    logout: logoutUser\n  }\n": types.LogoutUserDocument,
+    "\n  mutation RegisterUser($attributes: UserAttributes!) {\n    user: registerUser(attributes: $attributes) {\n      id\n      username\n      name\n      createdAt\n      updatedAt\n    }\n  }\n": types.RegisterUserDocument,
     "\n  query FetchCurrentUser {\n    currentUser: fetchCurrentUser {\n      id\n      username\n      name\n    }\n  }\n": types.FetchCurrentUserDocument,
     "\n  query FetchSuggestedSnacks(\n    $filters: [FilterInput!]\n    $order: [OrderInput!]\n    $page: Int\n    $limit: Int\n  ) {\n    snacks: fetchSuggestedSnacks(\n      filters: $filters\n      order: $order\n      page: $page,\n      limit: $limit\n    ) {\n      pagination {\n        page\n        pages\n        limit\n        count\n        prev\n        next\n      }\n\n      nodes {\n        id\n        icon\n        name\n        description\n        snackFlavors {\n          id\n          flavor {\n            id\n            name\n            icon\n          }\n        }\n        createdAt\n        updatedAt\n        flavorMatchScore\n      }\n    }\n  }\n": types.FetchSuggestedSnacksDocument,
     "\n  query FetchSnacks(\n    $filters: [FilterInput!]\n    $order: [OrderInput!]\n    $page: Int\n    $limit: Int\n  ) {\n    snacks: fetchSnacks(\n      filters: $filters\n      order: $order\n      page: $page,\n      limit: $limit\n    ) {\n      pagination {\n        page\n        pages\n        limit\n        count\n        prev\n        next\n      }\n\n      nodes {\n        id\n        icon\n        name\n        description\n        snackFlavors {\n          id\n          flavor {\n            id\n            name\n            icon\n          }\n        }\n        createdAt\n        updatedAt\n      }\n    }\n  }\n": types.FetchSnacksDocument,
@@ -38,6 +44,18 @@ const documents: Documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation LoginUser($username: String!, $password: String!) {\n    auth: loginUser(username: $username, password: $password) {\n      token\n      expiresAt\n      user {\n        id\n        username\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation LoginUser($username: String!, $password: String!) {\n    auth: loginUser(username: $username, password: $password) {\n      token\n      expiresAt\n      user {\n        id\n        username\n        name\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation LogoutUser {\n    logout: logoutUser\n  }\n"): (typeof documents)["\n  mutation LogoutUser {\n    logout: logoutUser\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation RegisterUser($attributes: UserAttributes!) {\n    user: registerUser(attributes: $attributes) {\n      id\n      username\n      name\n      createdAt\n      updatedAt\n    }\n  }\n"): (typeof documents)["\n  mutation RegisterUser($attributes: UserAttributes!) {\n    user: registerUser(attributes: $attributes) {\n      id\n      username\n      name\n      createdAt\n      updatedAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
