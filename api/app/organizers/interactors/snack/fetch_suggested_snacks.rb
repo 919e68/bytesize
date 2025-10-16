@@ -33,11 +33,12 @@ module Interactors::Snack
     end
 
     def flavor_count_query
+      flavor_ids = get_preferred_flavor_ids
       SnackFlavor
         .select(
           "snack_id",
           "COUNT(*) AS flavor_count",
-          "SUM(CASE WHEN flavor_id IN (#{get_preferred_flavor_ids.join(',')}) THEN 1 ELSE 0 END) AS match_count"
+          flavor_ids.any? ? "SUM(CASE WHEN flavor_id IN (#{get_preferred_flavor_ids.join(',')}) THEN 1 ELSE 0 END) AS match_count" : "0 AS match_count"
         )
         .group(:snack_id)
     end
