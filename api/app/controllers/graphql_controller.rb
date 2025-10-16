@@ -30,7 +30,7 @@ class GraphqlController < ApplicationController
           value: context[:auth_token],
           expires: 1.day.from_now,
           httponly: true,
-          secure: Rails.env.production?,
+          secure: true,
           same_site: :lax
         }
       else
