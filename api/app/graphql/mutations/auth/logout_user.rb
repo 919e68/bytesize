@@ -5,9 +5,7 @@ module Mutations::Auth
     null false
 
     def resolve
-      authorize!(User, :view?)
-
-      return false unless current_session
+      return false unless current_user
 
       session = current_session
       session.destroy!
