@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 
-import { Inter } from 'next/font/google'
+import { Karla } from 'next/font/google'
 
 import './globals.css'
 
+import { Header } from '~/components/shared/Header'
 import { Toaster } from '~/components/ui/sonner'
 import { QueryClient } from '~/providers/QueryClient'
 import { ThemeProvider } from '~/providers/ThemeProvider'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const font = Karla({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   description: 'Snack Swap App',
@@ -22,9 +23,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${font.className} bg-yellow-50 antialiased`}>
         <QueryClient>
           <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem>
+            <Header />
             {children}
             <Toaster closeButton position="top-right" />
           </ThemeProvider>
