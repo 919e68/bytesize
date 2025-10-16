@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers'
 
 import { client } from '~/graphql/client'
-import { CurrentUserQuery } from '~/graphql/generated/graphql'
+import { FetchCurrentUserQuery } from '~/graphql/generated/graphql'
 import { FETCH_CURRENT_USER_QUERY } from '~/graphql/queries/auth/FetchCurrentUser'
 
 export const getCurrentUser = async () => {
@@ -15,12 +15,11 @@ export const getCurrentUser = async () => {
   }
 
   try {
-    const data = await client.request<CurrentUserQuery>(FETCH_CURRENT_USER_QUERY, undefined, {
+    const data = await client.request<FetchCurrentUserQuery>(FETCH_CURRENT_USER_QUERY, undefined, {
       Authorization: `Bearer ${token}`
     })
     return data.user
   } catch {
-    localStorage.clear()
     return null
   }
 }

@@ -1,14 +1,16 @@
 'use client'
 
-import { createContext, ReactNode, useContext } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 
 import { User } from '~/graphql/generated/graphql'
 
 interface CurrentUserContextValue {
+  setUser: (user: User | null) => void
   user: User | null
 }
 
 export const CurrentUserContext = createContext<CurrentUserContextValue>({
+  setUser: () => {}, // default no-op
   user: null
 })
 
@@ -16,12 +18,15 @@ export const useCurrentUser = () => useContext(CurrentUserContext)
 
 interface CurrentUserProviderProps {
   children: ReactNode
-  currentUser: User
+  currentUser: User | null
 }
 
 export const CurrentUserProvider = ({ children, currentUser }: CurrentUserProviderProps) => {
-  const value = {
-    user: currentUser
+  const [user, setUser] = useState<User | null>(currentUser)
+
+  const value: CurrentUserContextValue = {
+    setUser,
+    user
   }
 
   return <CurrentUserContext.Provider value={value}>{children}</CurrentUserContext.Provider>

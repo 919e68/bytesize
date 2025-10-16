@@ -6,6 +6,9 @@ import './globals.css'
 
 import { Header } from '~/components/shared/Header'
 import { Toaster } from '~/components/ui/sonner'
+import { CurrentUserProvider } from '~/context/CurrentUserContext'
+import { User } from '~/graphql/generated/graphql'
+import { getCurrentUser } from '~/lib/server/auth'
 import { QueryClient } from '~/providers/QueryClient'
 import { ThemeProvider } from '~/providers/ThemeProvider'
 
@@ -16,20 +19,26 @@ export const metadata: Metadata = {
   title: 'SnackSwap'
 }
 
-const RootLayout = ({
+const RootLayout = async ({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) => {
+  const currentUser = await getCurrentUser()
+
+  console.log('Logger::currentUser', currentUser)
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${font.className} bg-yellow-50 antialiased`}>
         <QueryClient>
-          <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange enableSystem>
-            <Header />
-            {children}
-            <Toaster closeButton position="top-right" />
-          </ThemeProvider>
+          <CurrentUserProvider currentUser={currentUser as User}>
+            <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange enableSystem>
+              <Header />
+              {children}
+              <Toaster closeButton position="top-center" />
+            </ThemeProvider>
+          </CurrentUserProvider>
         </QueryClient>
       </body>
     </html>

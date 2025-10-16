@@ -2,7 +2,7 @@ import { gql } from 'graphql-tag'
 
 export const FETCH_CURRENT_USER_QUERY = gql`
   query FetchCurrentUser {
-    currentUser: fetchCurrentUser {
+    user: fetchCurrentUser {
       id
       username
       name
