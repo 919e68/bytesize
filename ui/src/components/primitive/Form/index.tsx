@@ -83,7 +83,7 @@ export const Form = ({ action, className, form, groups, onSubmit }: FormProps) =
     <FormProvider {...form}>
       <form className={cn('space-y-4', className)} onSubmit={handleSubmit(handleFormSubmit)}>
         {groups.map((group, idx) => (
-          <div className={cn('flex gap-2', group.className)} key={idx}>
+          <div className={cn(group.className)} key={idx}>
             {group.fields
               .filter((item) => !item.disabled)
               .map((field) => (

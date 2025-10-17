@@ -1,5 +1,6 @@
 'use client'
 
+import { Modal } from '~/components/primitive/Modal'
 import { MySnacks } from '~/components/shared/MySnacks'
 import { SnackSuggestions } from '~/components/shared/SnackSuggestions'
 import { useCurrentUser } from '~/context/CurrentUserContext'

@@ -20,7 +20,7 @@ export const IconSelection: FC<IconSelectionProps> = ({ onChange, value }) => {
         <Input onChange={(evt) => onChange?.(evt.target.value)} value={value} />
       </div>
 
-      <div className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent max-w-[400px] overflow-x-auto lg:max-w-[448px]">
+      <div className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent overflow-x-auto">
         <div className="flex min-w-max space-x-2 px-2 py-1">
           {EMOJIS.map((icon, index) => (
             <button
