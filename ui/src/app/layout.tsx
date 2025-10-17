@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import { Karla } from 'next/font/google'
 
@@ -16,7 +16,15 @@ const font = Karla({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   description: 'Snack Swap App',
-  title: 'SnackSwap'
+  title: 'SnackSwap',
+  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  width: 'device-width',
 }
 
 const RootLayout = async ({
