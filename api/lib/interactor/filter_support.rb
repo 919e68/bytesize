@@ -27,7 +27,7 @@ module Interactor
         type = filter[:type].to_s.underscore.to_sym
         value = filter[:value]
 
-        next if value.nil?
+        next unless value.present?
 
         if self.class._interactor_filters.key?(type)
           scope = scope.instance_exec(value, &self.class._interactor_filters[type])
