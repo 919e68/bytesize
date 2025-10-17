@@ -14,7 +14,7 @@ module Interactors::Flavor
     def call
       current_user_filter = filters.find { |f| f[:type] == "isCurrentUser" }
 
-      flavors = if current_user_filter[:value] && user.present?
+      flavors = if current_user_filter&.dig(:value) && user.present?
         user.flavors.distinct
       else
         Flavor.all
