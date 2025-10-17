@@ -69,7 +69,7 @@ export const Pagination: FC<PaginationProps> = ({ next, onClick, page, pages, pr
 
           {pageNumbers.map((p) => (
             <PaginationItem key={p}>
-              <Button className="hover:bg-orange-100" onClick={() => onClick(p)} variant={p === page ? 'default' : 'ghost'}>
+              <Button className="hover:bg-orange-100 focus:bg-primary" onClick={() => onClick(p)} variant={p === page ? 'default' : 'ghost'}>
                 {p}
               </Button>
             </PaginationItem>
