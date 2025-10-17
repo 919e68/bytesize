@@ -9,7 +9,8 @@ module Resolvers::Flavor
     def resolve(_args)
       interactor = Interactors::Flavor::FetchFlavors.call(
         filters: filters,
-        order: order
+        order: order,
+        user: current_user
       )
       interactor.data
     end

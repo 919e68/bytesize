@@ -12,7 +12,13 @@ module Interactors::Flavor
     end
 
     def call
-      flavors = Flavor.all
+      current_user_filter = filters.find { |f| f[:type] == "isCurrentUser" }
+
+      flavors = if current_user_filter[:value] && user.present?
+        user.flavors.distinct
+      else
+        Flavor.all
+      end
 
       context.data = flavors
     end

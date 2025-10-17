@@ -11,6 +11,12 @@ module Interactors::Snack
       attribute :value, :optional
     end
 
+    filter :flavor_id, ->(value) do
+      if value.present?
+        joins(:snack_flavors).where(snack_flavors: { flavor_id: value }).distinct
+      end
+    end
+
     def call
       snacks = Snack.all
       snacks = snacks.where(user_id: user.id) if user.present?
