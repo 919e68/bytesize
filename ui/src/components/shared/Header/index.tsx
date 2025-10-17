@@ -1,6 +1,6 @@
 'use client'
 
-import { LogOut, Popcorn, Search, User } from 'lucide-react'
+import { LogOut, Popcorn, User } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -56,20 +56,6 @@ export const Header = () => {
             </h1>
           </div>
 
-          <div className="mx-8 hidden max-w-md flex-1 md:flex">
-            <div className="relative w-full">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <Search className="size-4" />
-              </div>
-
-              <input
-                className="w-full rounded-full border border-gray-200 bg-gray-100/90 py-2 pr-4 pl-10 focus:border-transparent focus:ring-2 focus:ring-orange-400 focus:outline-none"
-                placeholder="Search for pizza, chips, drinks ..."
-                type="text"
-              />
-            </div>
-          </div>
-
           {user ? (
             <div className="flex items-center gap-2">
               <DropdownMenu>
@@ -104,7 +90,6 @@ export const Header = () => {
         </div>
       </nav>
 
-      {/* signup modal */}
       <Modal
         className="max-h-[calc(100vh-80px)]"
         description={action === 'signup' ? 'Join us and get started in seconds.' : 'Back for more? Let’s do this.'}

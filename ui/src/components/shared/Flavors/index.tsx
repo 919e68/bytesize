@@ -8,15 +8,16 @@ import { FlavorIcon } from './FlavorIcon'
 import { Loader } from './Loader'
 
 interface FlavorProps {
+  isCurrentUser?: boolean
   onClear?: () => void
   onSelect?: (flavor: Flavor) => void
   selectedFlavors?: string[]
   title?: string
 }
 
-export const Flavors: FC<FlavorProps> = ({ onClear, onSelect, selectedFlavors = [], title }) => {
+export const Flavors: FC<FlavorProps> = ({ isCurrentUser = false, onClear, onSelect, selectedFlavors = [], title }) => {
   const fetchFlavorsParams = useFetchArgs({
-    filters: [],
+    filters: isCurrentUser ? [{ type: 'isCurrentUser', value: true }] : [],
     order: [{ direction: SortDirectionEnum.Desc, field: 'id' }]
   })
   const fetchFlavorsQuery = useFetchFlavors(fetchFlavorsParams.variables)
@@ -30,16 +31,16 @@ export const Flavors: FC<FlavorProps> = ({ onClear, onSelect, selectedFlavors = 
   return (
     <div className="flex-1 flex-col">
       <div className="mb-2 flex h-5 justify-between">
-        <div>{title}</div>
+        <div className="text-sm font-bold text-orange-500">{title}</div>
 
         {selectedFlavors.length > 0 && (
-          <button className="cursor-pointer text-sm font-bold text-orange-500" onClick={() => onClear?.()}>
+          <button className="cursor-pointer px-6 text-xs font-bold text-red-500" onClick={() => onClear?.()}>
             Clear Selection
           </button>
         )}
       </div>
 
-      <div className="scrollbar-thumb-black/10 scrollbar-thin flex space-x-4 overflow-x-auto px-2 whitespace-nowrap">
+      <div className="scrollbar-thumb-black/10 scrollbar-thin flex space-x-4 overflow-x-auto rounded-full bg-orange-100 px-4 py-4 whitespace-nowrap">
         {isLoading && <Loader />}
 
         {!isLoading &&

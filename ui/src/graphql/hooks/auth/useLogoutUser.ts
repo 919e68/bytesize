@@ -20,8 +20,7 @@ export const useLogoutUser = (callbacks?: MutationCallback) => {
     onSuccess: (data) => {
       callbacks?.onSuccess?.(data)
 
-      queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SNACKS_QUERY'] })
-      queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SUGGESTED_SNACKS_QUERY'] })
+      queryClient.clear()
     }
   })
 }

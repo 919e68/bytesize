@@ -25,9 +25,14 @@ export const FETCH_SUGGESTED_SNACKS_QUERY = gql`
             icon
           }
         }
+
+        flavorMatchScore
+        averageRating
+        ratingCount
+        currentUserRating
+
         createdAt
         updatedAt
-        flavorMatchScore
       }
     }
   }

@@ -35,14 +35,6 @@ export const updateCachedItems = <T extends { id?: string }>(items: (T | null | 
       if (!cached) return cached
 
       if (Array.isArray(cached.nodes)) {
-        console.log('Logger::cache', query.queryKey, {
-          ...cached,
-          nodes: cached.nodes.map((node: T) => {
-            const updated = validItems.find((i) => i.id === node.id)
-            return updated ?? node
-          })
-        })
-
         return {
           ...cached,
           nodes: cached.nodes.map((node: T) => {

@@ -26,8 +26,6 @@ const RootLayout = async ({
 }>) => {
   const currentUser = await getCurrentUser()
 
-  console.log('Logger::currentUser', currentUser)
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${font.className} bg-yellow-50 antialiased`}>

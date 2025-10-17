@@ -9,7 +9,7 @@ export const MainPageContent = () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="flex flex-col gap-4 lg:flex-row">
         {!user && (
           <div className="flex flex-1 flex-col">
             <h2 className="text-lg font-bold">My Snacks</h2>

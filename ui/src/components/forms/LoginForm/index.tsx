@@ -12,11 +12,11 @@ import { useLoginUser } from '~/graphql/hooks/auth/useLoginUser'
 import { CodedError } from '~/lib/types/global'
 import { cn } from '~/lib/utils'
 
-interface LoginFormFormProps {
+interface LoginFormProps {
   onSuccess?: () => void
 }
 
-export const LoginForm: FC<LoginFormFormProps> = ({ onSuccess }) => {
+export const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
   const { setUser } = useCurrentUser()
   const form = useForm<FieldValues>({
     values: {
