@@ -38,7 +38,7 @@ export const Flavors: FC<FlavorProps> = ({ isCurrentUser = false, onClear, onSel
         <div className="text-sm font-bold text-orange-500">{title}</div>
 
         {selectedFlavors.length > 0 && (
-          <button className="cursor-pointer px-6 text-xs font-bold text-red-500" onClick={() => onClear?.()}>
+          <button className="cursor-pointer px-2 text-xs font-bold text-red-500" onClick={() => onClear?.()}>
             Clear Selection
           </button>
         )}
