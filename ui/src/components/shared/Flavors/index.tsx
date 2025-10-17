@@ -28,6 +28,10 @@ export const Flavors: FC<FlavorProps> = ({ isCurrentUser = false, onClear, onSel
 
   const isLoading = fetchFlavorsQuery.isLoading || fetchFlavorsQuery.isFetching
 
+  if (!isLoading && fetchFlavorsQuery?.data?.nodes?.length == 0) {
+    return null
+  }
+
   return (
     <div className="flex-1 flex-col">
       <div className="mb-2 flex h-5 justify-between">
