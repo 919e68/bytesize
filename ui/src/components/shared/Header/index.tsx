@@ -83,7 +83,7 @@ export const Header = () => {
                 Sign Up
               </button>
               <Button className="cursor-pointer rounded-full text-sm font-bold text-white" onClick={handleLogin}>
-                Login
+                Sign In
               </Button>
             </div>
           )}
@@ -95,7 +95,7 @@ export const Header = () => {
         description={action === 'signup' ? 'Join us and get started in seconds.' : 'Back for more? Let’s do this.'}
         onClose={() => setAction(undefined)}
         open={Boolean(action)}
-        title={action === 'signup' ? 'Sign Up' : 'Login'}
+        title={action === 'signup' ? 'Sign Up' : 'Sign In'}
       >
         <div className="max-h-[calc(100vh-180px)] flex-1 overflow-y-auto px-2">
           {action === 'signup' && <RegistrationForm onSuccess={() => setAction(undefined)} />}
