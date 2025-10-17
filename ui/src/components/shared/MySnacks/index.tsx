@@ -151,7 +151,7 @@ export const MySnacks = () => {
           ))}
       </div>
 
-      {!isLoading && !Boolean(fetchSnacksQuery?.data?.nodes?.length) && (
+      {!isLoading && Boolean(fetchSnacksQuery?.data?.nodes?.length) && (
         <div>
           <Pagination
             next={fetchSnacksQuery.data?.pagination?.next}
