@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    container_name: app.playfun.dev-app
+    container_name: snackswap.playfun.dev-app
     restart: unless-stopped
     environment:
       NODE_ENV: development
