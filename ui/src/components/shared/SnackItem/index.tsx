@@ -1,16 +1,15 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
-import { Button } from '~/components/ui/button'
 import { Snack } from '~/graphql/generated/graphql'
 
-interface SuggestedSnackProps {
-  onClick?: () => void
+interface SnackProps {
+  children?: ReactNode
   snack: Snack
 }
 
-export const SuggestedSnack: FC<SuggestedSnackProps> = ({ onClick, snack }) => {
+export const SnackItem: FC<SnackProps> = ({ children, snack }) => {
   return (
-    <div className="flex flex-col gap-2 rounded-lg bg-orange-100 p-4">
+    <div className="flex flex-1 flex-col gap-2 rounded-lg bg-orange-100 p-4">
       <div className="flex items-center justify-between">
         <div className="flex gap-2">
           <div className="text-3xl">{snack.icon}</div>
@@ -26,12 +25,10 @@ export const SuggestedSnack: FC<SuggestedSnackProps> = ({ onClick, snack }) => {
           ))}
         </div>
       </div>
+
       <div className="text-sm text-gray-800">{snack.description}</div>
-      <div className="flex w-full justify-end">
-        <Button className="rounded-full text-xs font-semibold" onClick={onClick}>
-          Ask For Swap
-        </Button>
-      </div>
+
+      {children}
     </div>
   )
 }
