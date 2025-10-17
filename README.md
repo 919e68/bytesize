@@ -3,6 +3,8 @@
 SnackSwap is a fun snack-sharing platform where users can discover, rate, and share their favorite snacks with others.
 Find today’s trending bites or the all-time legendary snacks — one rating at a time! 😋
 
+url: <https://snackswap.playfun.dev>
+
 ## 🧠 Tech Stack
 
 Frontend: React + TypeScript + React Query + React Hook Form + Tailwind
