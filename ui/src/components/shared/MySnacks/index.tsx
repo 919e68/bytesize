@@ -163,13 +163,13 @@ export const MySnacks = () => {
 
       {/* create/update modal */}
       <Modal
-        className="max-h-[calc(100vh-80px)]"
+        className="max-h-[calc(100dvh-40px)] lg:max-h-[calc(100dvh-80px)]"
         description="Craft your perfect snack bite"
         onClose={() => setIsFormOpen(false)}
         open={isFormOpen}
         title={snackId ? 'Update Snack' : 'Create Snack'}
       >
-        <div className="max-h-[calc(100vh-180px)] flex-1 overflow-y-auto px-2">
+        <div className="max-h-[calc(100dvh-180px)] flex-1 overflow-y-auto px-2">
           <SnackForm onSuccess={handleCloseForm} snackId={snackId} />
         </div>
       </Modal>
