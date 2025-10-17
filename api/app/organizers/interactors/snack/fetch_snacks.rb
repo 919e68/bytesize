@@ -17,6 +17,10 @@ module Interactors::Snack
       end
     end
 
+    filter :search, ->(value) do
+      where("`snacks`.`name` LIKE :search OR `snacks`.`description` LIKE :search", { search: "%#{value}%"})
+    end
+
     def call
       snacks = Snack.all
       snacks = snacks.where(user_id: user.id) if user.present?
