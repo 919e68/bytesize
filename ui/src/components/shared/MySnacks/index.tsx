@@ -151,15 +151,17 @@ export const MySnacks = () => {
           ))}
       </div>
 
-      <div>
-        <Pagination
-          next={fetchSnacksQuery.data?.pagination?.next}
-          onClick={fetchSnacksParams.setPage}
-          page={fetchSnacksParams.variables.page}
-          pages={fetchSnacksQuery.data?.pagination?.pages}
-          prev={fetchSnacksQuery.data?.pagination?.prev}
-        />
-      </div>
+      {!isLoading && Boolean(fetchSnacksQuery?.data?.nodes?.length) && (
+        <div>
+          <Pagination
+            next={fetchSnacksQuery.data?.pagination?.next}
+            onClick={fetchSnacksParams.setPage}
+            page={fetchSnacksParams.variables.page}
+            pages={fetchSnacksQuery.data?.pagination?.pages}
+            prev={fetchSnacksQuery.data?.pagination?.prev}
+          />
+        </div>
+      )}
 
       {/* create/update modal */}
       <Modal
