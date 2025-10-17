@@ -22,12 +22,13 @@ module Types
     def rating_count
       dataloader.with(Sources::SnackRatingsSummary).load(object.id).then { |r| r[:count] }
     end
+
     def current_user_rating
-      user = context[:current_user]
-      return nil unless user
+      user_id = context&.current_session&.user_id
+      return nil unless user_id
 
       dataloader
-        .with(Sources::CurrentUserRating, user_id: user.id)
+        .with(Sources::CurrentUserRating, user_id: user_id)
         .load(object.id)
     end
   end

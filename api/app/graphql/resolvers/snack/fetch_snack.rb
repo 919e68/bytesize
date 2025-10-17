@@ -1,7 +1,7 @@
 module Resolvers::Snack
   class FetchSnack < Resolvers::BaseResolver
     type Types::SnackType, null: false
-    description 'fetch a snacks'
+    description 'fetch a snack'
 
     param :id, ID, required: true
 

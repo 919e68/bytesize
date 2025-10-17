@@ -9,5 +9,8 @@ module Types::Root
     field :create_snack, mutation: Mutations::Snack::CreateSnack
     field :update_snack, mutation: Mutations::Snack::UpdateSnack
     field :remove_snack, mutation: Mutations::Snack::RemoveSnack
+
+    # rating
+    field :create_rating, mutation: Mutations::Rating::CreateRating
   end
 end
