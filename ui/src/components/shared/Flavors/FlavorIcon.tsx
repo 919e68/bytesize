@@ -17,7 +17,7 @@ export const FlavorIcon: FC<FlavorIconProps> = ({ flavor, isActive = false, onCl
   return (
     <button
       className={cn(
-        'flex h-18 w-18 flex-shrink-0 cursor-pointer flex-col items-center justify-center rounded-full border-2 border-transparent bg-orange-200',
+        'flex h-16 w-16 flex-shrink-0 cursor-pointer flex-col items-center justify-center rounded-full border-2 border-transparent bg-orange-200',
         {
           'border-orange-500 bg-orange-300 font-bold': isActive
         }

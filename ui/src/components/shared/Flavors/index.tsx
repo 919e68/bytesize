@@ -44,19 +44,23 @@ export const Flavors: FC<FlavorProps> = ({ isCurrentUser = false, onClear, onSel
         )}
       </div>
 
-      <div className="scrollbar-thumb-black/10 scrollbar-thin flex space-x-4 overflow-x-auto rounded-full bg-orange-100 px-4 py-4 whitespace-nowrap">
-        {isLoading && <Loader />}
+      <div className='p-2 bg-orange-100 rounded-full'>
+        <div className="scrollbar-thumb-black/10 scrollbar-thin flex space-x-4 overflow-x-auto rounded-full whitespace-nowrap">
+          {isLoading && <Loader />}
 
-        {!isLoading &&
-          fetchFlavorsQuery?.data?.nodes?.map((flavor) => (
-            <FlavorIcon
-              flavor={flavor}
-              isActive={selectedFlavors.includes(flavor.id)}
-              key={`flavor-${flavor.id}`}
-              onClick={handleSelectFlavor}
-            />
-          ))}
+          {!isLoading &&
+            fetchFlavorsQuery?.data?.nodes?.map((flavor) => (
+              <FlavorIcon
+                flavor={flavor}
+                isActive={selectedFlavors.includes(flavor.id)}
+                key={`flavor-${flavor.id}`}
+                onClick={handleSelectFlavor}
+              />
+            ))}
+        </div>
       </div>
+
+
     </div>
   )
 }
