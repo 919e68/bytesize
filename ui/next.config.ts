@@ -3,9 +3,8 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      new URL('https://api.app.playfun.dev/**'),
-      new URL('https://api.app.live/api/**'),
-      new URL('https://api.app.playfun.dev/api/**')
+      new URL('https://api.snackswap.playfun.dev/**'),
+      new URL('https://snackswap.playfun.dev/api/**')
     ]
   },
   output: 'standalone',

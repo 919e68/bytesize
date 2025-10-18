@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    container_name: api.snackswap.local
+    environment:
+      RAILS_ENV: development
+    command: bundle exec rails server -e development -b 0.0.0.0 -p 3000
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    networks:
+      - snackswap_network
+    ports:
+      - 3001:3000
+    depends_on:
+      - mysql
+    stdin_open: true
+    tty: true
+
+  mysql:
+    image: mysql:8.0
+    container_name: db.snackswap.local
+    volumes:
+      - ./data:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: snackswap_dev
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
+    networks:
+      - snackswap_network
+
+networks:
+  snackswap_network:
+    external: true
