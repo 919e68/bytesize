@@ -9,17 +9,15 @@ import { queryClient } from '~/providers/QueryClient'
 export const useFetchSnack = (id?: string, callback?: (data: Snack) => void) => {
   const queryKey = ['FETCH_SNACK_QUERY', id]
 
-  const matchingQueries = queryClient.getQueryCache().findAll({
-    queryKey: ['FETCH_SNACKS_QUERY'],
-    type: 'all'
-  })
+  const matchingQueries = queryClient
+    .getQueryCache()
+    .findAll({ queryKey: ['FETCH_SNACKS_QUERY'], type: 'active' })
 
-  let cached: Snack | undefined
+  let cached: Snack | undefined;
 
   for (const query of matchingQueries) {
     const data = query.state.data as SnackConnection | undefined
     const match = data?.nodes?.find((t) => t.id === id)
-
     if (match) {
       cached = match
       break
@@ -27,8 +25,9 @@ export const useFetchSnack = (id?: string, callback?: (data: Snack) => void) => 
   }
 
   return useQuery<Snack>({
-    enabled: Boolean(id) && !cached,
+    enabled: Boolean(id),
     initialData: cached,
+    placeholderData: (prev) => prev,
     queryFn: () =>
       graphqlReq<FetchSnackQuery>(FETCH_SNACK_QUERY, { id }).then((data) => {
         if (callback) {
@@ -38,6 +37,6 @@ export const useFetchSnack = (id?: string, callback?: (data: Snack) => void) => 
         return data.snack as Snack
       }),
     queryKey,
-    staleTime: 1000 * 60 * 2
+    staleTime: 1000 * 30
   })
 }

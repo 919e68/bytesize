@@ -21,9 +21,9 @@ export const useUpdateSnack = (callbacks?: MutationCallback) => {
       callbacks?.onSuccess?.(data)
 
       queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_FLAVORS_QUERY'] })
-      queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SNACK_QUERY'] })
       queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SNACKS_QUERY'] })
       queryClient.invalidateQueries({ exact: false, queryKey: ['FETCH_SUGGESTED_SNACKS_QUERY'] })
+      queryClient.invalidateQueries({ queryKey: ['FETCH_SNACK_QUERY', data.id] })
     }
   })
 }

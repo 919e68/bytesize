@@ -28,7 +28,6 @@ export const useCreateRating = (callbacks?: MutationCallback) => {
         .getQueryCache()
         .findAll({ exact: false, queryKey: ['FETCH_SUGGESTED_SNACKS_QUERY'] })
         .forEach((query) => {
-          console.log('FETCH_SUGGESTED_SNACKS_QUERY', query)
           const cached = query.state.data as SnackConnection
           if (!cached?.nodes) return
 
@@ -42,7 +41,6 @@ export const useCreateRating = (callbacks?: MutationCallback) => {
         .getQueryCache()
         .findAll({ exact: false, queryKey: ['FETCH_FEATURED_SNACK_QUERY'] })
         .forEach((query) => {
-          console.log('FETCH_FEATURED_SNACK_QUERY', query)
           const cached = query.state.data as FeaturedSnack
           if (!cached?.snack || data.attributes.snackId != cached.snack.id) return
 
