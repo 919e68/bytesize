@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -e
+
+# create network
+docker network inspect snackswap_network >/dev/null 2>&1 || docker network create snackswap_network >/dev/null 2>&1
+
+# start: api setup
+cat > ./api/.env <<'EOF'
+RAILS_HOST=localhost:3000 localhost:3001
+ALLOWED_ORIGINS=http://localhost:3000
+DB_HOST=mysql
+DB_USER=root
+DB_PASS=secret
+SECRET_KEY_BASE=6N86A0Q5WVWC1Q2UG0SOAVPWNMBH3ASQ
+EOF
+
+docker compose -f ./api/compose.local.yml build
+docker compose -f ./api/compose.local.yml down >/dev/null 2>&1 || true
+docker compose -f ./api/compose.local.yml run --rm app bundle exec rails db:create
+docker compose -f ./api/compose.local.yml run --rm app bundle exec rails db:migrate
+docker compose -f ./api/compose.local.yml run --rm app bundle exec rails db:seed
+docker compose -f ./api/compose.local.yml up -d
+# end: api setup
+
+
+# start: ui setup
+cat > ./ui/.env <<'EOF'
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://api.snackswap.local:3000
+JWT_SECRET=6N86A0Q5WVWC1Q2UG0SOAVPWNMBH3ASQ
+EOF
+
+docker compose -f ./ui/compose.local.yml build
+docker compose -f ./ui/compose.local.yml down >/dev/null 2>&1 || true
+docker compose -f ./ui/compose.local.yml up -d
+# end: ui setup

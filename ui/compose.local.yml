@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: snackswap.local
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    networks:
+      - snackswap_network
+    ports:
+      - 3000:3000
+
+networks:
+  snackswap_network:
+    external: true
