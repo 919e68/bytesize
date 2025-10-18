@@ -56,3 +56,12 @@ Auth: JWT || Cookies
 
 - Users can rate and comment on snacks added by others.
 - Ratings contribute to each snack’s average score and featured rankings
+
+## 🧠 Instruction
+
+- Requiments: Docker, Docker Compose
+
+```bash
+chmod +x start
+./start
+```
