@@ -59,7 +59,7 @@ Auth: JWT || Cookies
 
 ## 🧠 Instruction
 
-- Requiments: Docker, Docker Compose
+- Requirements: `Docker`, `Docker Compose`
 
 ```bash
 chmod +x start
