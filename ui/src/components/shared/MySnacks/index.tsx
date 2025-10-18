@@ -75,6 +75,11 @@ export const MySnacks = () => {
     }
   }
 
+  const handleRemoveConfirmationClose = () => {
+    setSnackId(undefined)
+    setRemoveConfirmation(false)
+  }
+
   const handleSelectFlavor = (flavor: Flavor) => {
     setSelectedFlavors((prev) => {
       let newState: string[]
@@ -167,7 +172,7 @@ export const MySnacks = () => {
       <Modal
         className="max-h-[calc(100dvh-40px)] lg:max-h-[calc(100dvh-80px)]"
         description="Craft your perfect snack bite"
-        onClose={() => setIsFormOpen(false)}
+        onClose={handleCloseForm}
         open={isFormOpen}
         title={snackId ? 'Update Snack' : 'Create Snack'}
       >
@@ -181,7 +186,7 @@ export const MySnacks = () => {
         confirmText="Remove Snack"
         description="Are you sure you want to remove this snack?"
         isLoading={removeSnackMutation.isPending}
-        onClose={() => setRemoveConfirmation(false)}
+        onClose={handleRemoveConfirmationClose}
         onConfirm={handleConfirmSnackRemoval}
         open={removeConfirmation}
         title={'Remove Snack Confirmation'}
